@@ -16,7 +16,7 @@
 
 3. Linux系统中搭建分析流程
 
-   启动Linux系统，安装conda软件（https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html），
+   启动Linux系统，安装conda软件*https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html*
 
 ```
 mkdir -p ~/miniconda3
@@ -98,7 +98,7 @@ pile up：堆积，一些reads同时集中于某一区域，产生堆积效应�
 
 **3. 序列比对Mapping**
 
-   对于基因组测序结果分析，常用的mapping软件有BWA-MEM2以及bowtie2。这里以bowtie2为例，演示比对过程。需要提前准备index文件，常见物种的index文件可以在bowtie2网站中下载（https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml）
+   对于基因组测序结果分析，常用的mapping软件有BWA-MEM2以及bowtie2。这里以bowtie2为例，演示比对过程。需要提前准备index文件，常见物种的index文件可以在bowtie2网站中下载*https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml*
 
  ```
  ##对于单端测序使用一下指令：
@@ -149,9 +149,9 @@ samtools index -@ 20 AAA.rmdup.bam
 ```
 bamCoverage --normalizeUsing RPGC --effectiveGenomeSize 2864785220 --binSize 10 -p max –smoothLength 40 --ignoreDuplicates --centerReads -b AAA.rmdup.bam -o ./BigWig/AAA.bw
 ```
-   对于基因组测序结果建议使用RPGC进行归一化，需要设置--effectiveGenomeSize参数，不同基因组版本的参数值不一样，具体参考网站（https://deeptools.readthedocs.io/en/latest/content/feature/effectiveGenomeSize.html）。建议选择弃掉duplicates，添加blacklist。
+   对于基因组测序结果建议使用RPGC进行归一化，需要设置--effectiveGenomeSize参数，不同基因组版本的参数值不一样，具体参考网站*https://deeptools.readthedocs.io/en/latest/content/feature/effectiveGenomeSize.html*
    
-   对于双端测序结果，**一定要使用--extendReads参数进行优化**（不用设置参数值），而单端测序结果需要再根据平均sequence长度设置参数值。**双端测序不可同时设置--centerReads和--extendReads**。
+   对于双端测序结果，**一定要使用--extendReads参数进行优化**（不用设置参数值），而单端测序结果需要再根据平均sequence长度设置参数值。**双端测序不可同时设置--centerReads和--extendReads**。建议选择弃掉duplicates，添加blacklist。
 
    在IGV中观察可视化结果时，对于ChIP-seq，应观察1）峰是否完整，清楚。还是连成一片；2）它是否出现的正确的位置；3）如果是Transcript factor，峰是否是在它应该在的位置上，比如TSS的上游？如果是H3K4me3，峰是否富集的TSS附近？如果是H3K4me1/2,H3/H4ac, DNase，峰是否在TSS附近或者调控单元的末端？如果是H3K36me3，峰是否全基因都富集？如果是H3K27me3，是否富集在inactive基因的CpG island附近？如果H3K9me3，峰是否出现在broad domains和repeat elements上；4）背景是否足够低；5）检查有无明显的尖刺样的信号（spikes）。它们可能是由污染等原因造成的。
 
