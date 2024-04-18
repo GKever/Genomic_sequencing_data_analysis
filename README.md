@@ -147,7 +147,7 @@ samtools index -@ 20 AAA.rmdup.bam
 
    在基因组浏览器UCSC genome browser或IGV中可以查看mapping后的结果，可以用于在genome browser或者viewer中显示的文件格式有：bed, wiggle, bedGraph, bam, gff/gtf等等。最常见的就是bigwig文件，该文件可以通过bam文件或者bgd文件生成。bam文件是比对后最接近原始结果，建议用bam文件生成bigwig。
 ```
-bamCoverage --normalizeUsing RPGC --effectiveGenomeSize 2864785220 --binSize 10 -p max –smoothLength 40 --ignoreDuplicates --centerReads-b T-XXXXX.rmdup.bam -o ./BigWig/XXXXX.bw
+bamCoverage --normalizeUsing RPGC --effectiveGenomeSize 2864785220 --binSize 10 -p max –smoothLength 40 --ignoreDuplicates --centerReads -b AAA.rmdup.bam -o ./BigWig/AAA.bw
 ```
    对于基因组测序结果建议使用用RPGC进行归一化，需要设置--effectiveGenomeSize参数，不同基因组版本的参数值不一样，具体参考网站（https://deeptools.readthedocs.io/en/latest/content/feature/effectiveGenomeSize.html）。建议选择弃掉duplicates，添加blacklist。
    
@@ -157,17 +157,16 @@ bamCoverage --normalizeUsing RPGC --effectiveGenomeSize 2864785220 --binSize 10 
 
 **6. Peak calling，找峰**
 
-      Call peak有几种不同的策略，可根据目的需要选择：
-```
+   Call peak有几种不同的策略，可根据目的需要选择：
 
-转录因子的尖峰策略，参数含义用代码$macs2 callpeak -h查看
+```
+##转录因子的尖峰策略，参数含义用代码macs2 callpeak -h查看
 
 macs2 callpeak -t AAA.sort.rmdup.bam -c input.sort.rmdup.bam -f BAMPE -g hs --SPMR  -B -q 0.01 --outdir ./ -n AAA --cutoff-analysis
 
-组蛋白的宽峰策略
+##组蛋白的宽峰策略
 
 macs2 callpeak -t AAA.sort.rmdup.bam -c input.sort.rmdup.bam -f BAMPE  -g hs --SPMR --broad --broad-cutoff  0.01 --outdir ./ -n AAA --cutoff-analysis
-
 
 ```
    **对于双端测序一定要选择BAMPE模式**，很过旧的分析方法里都没提到过这个问题，如果是CUT&Tag或者ATAC-seq，参考文件“-c”可以不设置。--SPMR 是MACS2自带的均一化方法，对峰弱化很多，如果只是peakcalling，可以不设置，而且可以添加```--keep-dup all```参数，添加blacklist。
