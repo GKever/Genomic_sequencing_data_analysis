@@ -149,7 +149,7 @@ samtools index -@ 20 AAA.rmdup.bam
 ```
 bamCoverage --normalizeUsing RPGC --effectiveGenomeSize 2864785220 --binSize 10 -p max –smoothLength 40 --ignoreDuplicates --centerReads -b AAA.rmdup.bam -o ./BigWig/AAA.bw
 ```
-   对于基因组测序结果建议使用用RPGC进行归一化，需要设置--effectiveGenomeSize参数，不同基因组版本的参数值不一样，具体参考网站（https://deeptools.readthedocs.io/en/latest/content/feature/effectiveGenomeSize.html）。建议选择弃掉duplicates，添加blacklist。
+   对于基因组测序结果建议使用RPGC进行归一化，需要设置--effectiveGenomeSize参数，不同基因组版本的参数值不一样，具体参考网站（https://deeptools.readthedocs.io/en/latest/content/feature/effectiveGenomeSize.html）。建议选择弃掉duplicates，添加blacklist。
    
    对于双端测序结果，**一定要使用--extendReads参数进行优化**（不用设置参数值），而单端测序结果需要再根据平均sequence长度设置参数值。**双端测序不可同时设置--centerReads和--extendReads**。
 
