@@ -57,15 +57,17 @@ conda activate seq
 
 写在开头，对于测序过程中的一些基本概念，比如sequence，fragments，reads，peak，bin等，需要有一些基本理解，
 
-fragments：这个一般指片段化之后的DNA片段，和sequence的含义基本一致；
+fragments：一般指片段化之后的DNA片段；
 
-reads：读长，指测序后的碱基序列，不等同于fragments;
+reads：读长，指测序后的碱基序列，reads不等同于fragments;
+
+sequence：概念介于fragments和reads之间，多数情况下指用于测序的DNA片段，用的比较混乱。
 
 alignment: 比对，把reads比对至基因组对应的位置上，等同于mapping;
 
-genomic build：指基因组版本号，序列比对时需要参考基因组，不同物种有各自的参考序列，同一物种的基因组序列也有不同的组装版本，如GRCh38（hg19）/GRCh39，GRCm38（mm10）/GRCm39。
+genomic build：指基因组版本号，序列比对时需要参考基因组，不同物种有各自的参考序列，同一物种的基因组序列也有不同的组装版本，如GRCh38（hg19）/GRCh39，GRCm38（mm10）/GRCm39；
 
-concordantly mapping：对于双端测序，一段fragment产生的两个reads应为相向分布，此时称为concordantly。但由于比对错误或者某些特殊序列，导致paired reads分布不符合相向特征，如同向，不在同一位置等，称为disconcordantly，这样的序列会在后续分析中剔除。
+concordantly mapping：对于双端测序，一段fragment产生的两个reads应为相向分布，此时称为concordantly。但由于比对错误或者某些特殊序列，导致paired reads分布不符合相向特征，如同向，不在同一位置等，称为disconcordantly，这样的序列会在后续分析中剔除；
 
 pile up：堆积，一些reads同时集中于某一区域，产生堆积效应，容易形成峰状图形；
 
