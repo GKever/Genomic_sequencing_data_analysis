@@ -1,0 +1,23 @@
+name: seq
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bedtools=2.30.0=hc088bd4_0
+  - bowtie2=2.3.5.1=py37he513fc3_0
+  - bwa-mem2=2.2.1=h9a82719_1
+  - bzip2=1.0.8=hd590300_5
+  - circos=0.69.8=hdfd78af_1
+  - cutadapt=1.18=py37h14c3975_1
+  - deeptools=3.5.1=py_0
+  - deeptoolsintervals=0.1.9=py37h8902056_4
+  - fastp=0.12.4=0
+  - fastqc=0.11.9=hdfd78af_1
+  - intervene=0.6.4=pyh864c0ab_3
+  - macs2=2.2.6=py37h516909a_0
+  - picard=2.25.1=hdfd78af_1
+  - samtools=1.7=1
+  - seqkit=2.5.1=h9ee0642_0
+  - trim-galore=0.6.10=hdfd78af_0
+  - unzip=6.0=h7f98852_3
